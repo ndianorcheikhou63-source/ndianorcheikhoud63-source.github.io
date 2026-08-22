@@ -1,0 +1,807 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ndianor Shop</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        header {
+            background: #0756a8;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #0756a8;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background: white;
+            width: 250px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .product img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        .product h2 {
+            color: #0756a8;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .button {
+            background: #0756a8;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #043d78;
+        }
+
+        /* PANIER */
+
+        .cart {
+            background: white;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .cart h2 {
+            color: #0756a8;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            gap: 10px;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background: #0756a8;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity span {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* LIVRAISON */
+
+        .delivery {
+            margin-top: 25px;
+        }
+
+        .delivery h3 {
+            color: #0756a8;
+        }
+
+        .delivery select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* INFORMATIONS CLIENT */
+
+        .customer-info {
+            margin-top: 25px;
+        }
+
+        .customer-info h3 {
+            color: #0756a8;
+        }
+
+        .customer-info input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* BOUTONS */
+
+        .delete-button {
+            margin-top: 20px;
+            background: #d62828;
+        }
+
+        .delete-button:hover {
+            background: #a51f1f;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .whatsapp:hover {
+            background: #1ebe5d;
+        }
+
+        footer {
+            background: #0756a8;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>🛍️ Ndianor Shop</h1>
+
+        <p>Bienvenue dans ma boutique</p>
+
+    </header>
+
+
+    <nav>
+
+        <a href="#">Accueil</a>
+
+        <a href="#produits">Produits</a>
+
+        <a href="#panier">🛒 Panier</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <h2 class="title" id="produits">
+            🔥 Nos produits
+        </h2>
+
+
+        <div class="products">
+
+
+            <!-- T-SHIRT -->
+
+            <div class="product">
+
+                <img
+                    src="images/tshirt.jpg"
+                    alt="T-Shirt"
+                >
+
+                <h2>T-Shirt</h2>
+
+                <p>
+                    T-Shirt moderne et confortable.
+                </p>
+
+                <p class="price">
+                    5 000 FCFA
+                </p>
+
+                <button
+                    class="button"
+                    onclick="ajouterAuPanier('T-Shirt', 5000)"
+                >
+                    🛒 Ajouter au panier
+                </button>
+
+            </div>
+
+
+            <!-- CHAUSSURES -->
+
+            <div class="product">
+
+                <img
+                    src="images/chaussures.jpg"
+                    alt="Chaussures"
+                >
+
+                <h2>Chaussures</h2>
+
+                <p>
+                    Chaussures de sport.
+                </p>
+
+                <p class="price">
+                    15 000 FCFA
+                </p>
+
+                <button
+                    class="button"
+                    onclick="ajouterAuPanier('Chaussures', 15000)"
+                >
+                    🛒 Ajouter au panier
+                </button>
+
+            </div>
+
+
+            <!-- ECOUTEURS -->
+
+            <div class="product">
+
+                <img
+                    src="images/ecouteurs.jpg"
+                    alt="Écouteurs"
+                >
+
+                <h2>Écouteurs</h2>
+
+                <p>
+                    Écouteurs pour écouter ta musique.
+                </p>
+
+                <p class="price">
+                    8 000 FCFA
+                </p>
+
+                <button
+                    class="button"
+                    onclick="ajouterAuPanier('Écouteurs', 8000)"
+                >
+                    🛒 Ajouter au panier
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PANIER -->
+
+        <div class="cart" id="panier">
+
+            <h2>
+                🛒 Mon panier
+            </h2>
+
+
+            <div id="cartItems">
+
+                <p>
+                    Votre panier est vide.
+                </p>
+
+            </div>
+
+
+            <!-- LIVRAISON -->
+
+            <div class="delivery">
+
+                <h3>
+                    🚚 Livraison
+                </h3>
+
+                <select
+                    id="livraison"
+                    onchange="afficherPanier()"
+                >
+
+                    <option value="0">
+                        Retrait sur place — 0 FCFA
+                    </option>
+
+                    <option value="1500">
+                        Dakar — 1 500 FCFA
+                    </option>
+
+                    <option value="2500">
+                        Banlieue — 2 500 FCFA
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="total">
+
+                Total :
+                <span id="total">
+                    0
+                </span>
+                FCFA
+
+            </div>
+
+
+            <!-- VIDER PANIER -->
+
+            <button
+                class="button delete-button"
+                onclick="viderPanier()"
+            >
+
+                🗑️ Vider le panier
+
+            </button>
+
+
+            <!-- INFORMATIONS CLIENT -->
+
+            <div class="customer-info">
+
+                <h3>
+                    📋 Informations de livraison
+                </h3>
+
+
+                <input
+                    type="text"
+                    id="clientNom"
+                    placeholder="Votre nom"
+                >
+
+
+                <input
+                    type="tel"
+                    id="clientTelephone"
+                    placeholder="Votre numéro de téléphone"
+                >
+
+
+                <input
+                    type="text"
+                    id="clientAdresse"
+                    placeholder="Votre adresse ou quartier"
+                >
+
+            </div>
+
+
+            <!-- WHATSAPP -->
+
+            <button
+                class="whatsapp"
+                onclick="commanderWhatsApp()"
+            >
+
+                📱 Commander sur WhatsApp
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <footer id="contact">
+
+        <p>
+            © 2026 Ndianor Shop
+        </p>
+
+        <p>
+            Votre boutique en ligne
+        </p>
+
+    </footer>
+
+
+
+<script>
+
+    // =========================
+    // PANIER
+    // =========================
+
+    let panier = [];
+
+
+    // =========================
+    // AJOUTER AU PANIER
+    // =========================
+
+    function ajouterAuPanier(nom, prix) {
+
+        let produit = panier.find(function(item) {
+
+            return item.nom === nom;
+
+        });
+
+
+        if (produit) {
+
+            produit.quantite++;
+
+        } else {
+
+            panier.push({
+
+                nom: nom,
+
+                prix: prix,
+
+                quantite: 1
+
+            });
+
+        }
+
+
+        afficherPanier();
+
+    }
+
+
+
+    // =========================
+    // AUGMENTER QUANTITE
+    // =========================
+
+    function augmenter(index) {
+
+        panier[index].quantite++;
+
+        afficherPanier();
+
+    }
+
+
+
+    // =========================
+    // DIMINUER QUANTITE
+    // =========================
+
+    function diminuer(index) {
+
+        panier[index].quantite--;
+
+
+        if (panier[index].quantite <= 0) {
+
+            panier.splice(index, 1);
+
+        }
+
+
+        afficherPanier();
+
+    }
+
+
+
+    // =========================
+    // AFFICHER PANIER
+    // =========================
+
+    function afficherPanier() {
+
+        let cartItems =
+            document.getElementById("cartItems");
+
+        let totalElement =
+            document.getElementById("total");
+
+
+        cartItems.innerHTML = "";
+
+
+        let totalProduits = 0;
+
+
+        // PANIER VIDE
+
+        if (panier.length === 0) {
+
+            cartItems.innerHTML =
+                "<p>Votre panier est vide.</p>";
+
+            totalElement.textContent = "0";
+
+            return;
+
+        }
+
+
+        // AFFICHER LES PRODUITS
+
+        panier.forEach(function(produit, index) {
+
+            let sousTotal =
+                produit.prix * produit.quantite;
+
+
+            totalProduits += sousTotal;
+
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+                            ${produit.nom}
+                        </strong>
+
+                        <br>
+
+                        ${produit.prix.toLocaleString()}
+                        FCFA
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="diminuer(${index})"
+                        >
+                            −
+                        </button>
+
+
+                        <span>
+                            ${produit.quantite}
+                        </span>
+
+
+                        <button
+                            onclick="augmenter(${index})"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <strong>
+
+                        ${sousTotal.toLocaleString()}
+                        FCFA
+
+                    </strong>
+
+                </div>
+
+            `;
+
+        });
+
+
+        // =========================
+        // FRAIS LIVRAISON
+        // =========================
+
+        let livraisonElement =
+            document.getElementById("livraison");
+
+
+        let fraisLivraison =
+            Number(livraisonElement.value);
+
+
+        // TOTAL FINAL
+
+        let totalFinal =
+            totalProduits + fraisLivraison;
+
+
+        totalElement.textContent =
+            totalFinal.toLocaleString();
+
+    }
+
+
+
+    // =========================
+    // VIDER LE PANIER
+    // =========================
+
+    function viderPanier() {
+
+        panier = [];
+
+        afficherPanier();
+
+    }
+
+
+
+    // =========================
+    // COMMANDER WHATSAPP
+    // =========================
+function commanderWhatsApp() {
+
+    if (panier.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }
+
+    let nom = document.getElementById("clientNom").value;
+    let telephone = document.getElementById("clientTelephone").value;
+    let adresse = document.getElementById("clientAdresse").value;
+
+    if (nom === "" || telephone === "" || adresse === "") {
+        alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
+        return;
+    }
+
+    let livraisonElement = document.getElementById("livraison");
+
+    let fraisLivraison = 0;
+    let nomLivraison = "Retrait sur place";
+
+    if (livraisonElement) {
+        fraisLivraison = Number(livraisonElement.value);
+
+        if (livraisonElement.value === "1500") {
+            nomLivraison = "Dakar";
+        }
+
+        if (livraisonElement.value === "2500") {
+            nomLivraison = "Banlieue";
+        }
+    }
+
+    let message = "Bonjour, je voudrais commander :\n\n";
+
+    let totalProduits = 0;
+
+    panier.forEach(function(produit) {
+
+        let sousTotal = produit.prix * produit.quantite;
+
+        totalProduits += sousTotal;
+
+        message +=
+            "- " +
+            produit.nom +
+            " x" +
+            produit.quantite +
+            " = " +
+            sousTotal.toLocaleString() +
+            " FCFA\n";
+    });
+
+    let totalFinal = totalProduits + fraisLivraison;
+
+    message +=
+        "\nLivraison : " +
+        nomLivraison +
+        " = " +
+        fraisLivraison.toLocaleString() +
+        " FCFA";
+
+    message +=
+        "\n\nTotal : " +
+        totalFinal.toLocaleString() +
+        " FCFA";
+
+    message +=
+        "\n\nNom : " + nom +
+        "\nTéléphone : " + telephone +
+        "\nAdresse : " + adresse;
+
+    let numero = "221782220651";
+
+    let url =
+        "whatsapp://send?phone=" +
+        numero +
+        "&text=" +
+        encodeURIComponent(message);
+
+    if (confirm("Confirmer l'envoi de votre commande sur WhatsApp ?")) {
+        window.open(url, "_blank");
+    }
+}
+    </script>
+
+
+</body>
+
+</html>
+```
