@@ -1,807 +1,361 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ndianor Shop</title>
 
-    <title>Ndianor Shop</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
 
-    <style>
+header {
+    background: #0756a8;
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-        }
+header h1 {
+    margin: 0;
+}
 
-        header {
-            background: #0756a8;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
+nav {
+    margin-top: 15px;
+}
 
-        header h1 {
-            margin: 0;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
 
-        nav {
-            background: white;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+section {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
 
-        nav a {
-            color: #0756a8;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-        }
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
 
-        .title {
-            text-align: center;
-        }
+.product img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 8px;
+}
 
-        .products {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+.product h3 {
+    margin-bottom: 5px;
+}
 
-        .product {
-            background: white;
-            width: 250px;
-            padding: 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-        }
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0756a8;
+}
 
-        .product img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            display: block;
-            margin: 0 auto 15px;
-        }
+button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 8px;
+}
 
-        .product h2 {
-            color: #0756a8;
-        }
+.add {
+    background: #0756a8;
+    color: white;
+}
 
-        .price {
-            font-size: 22px;
-            font-weight: bold;
-        }
+.delete {
+    background: #d9534f;
+    color: white;
+}
 
-        .button {
-            background: #0756a8;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.whatsapp {
+    background: #25D366;
+    color: white;
+    width: 100%;
+}
 
-        .button:hover {
-            background: #043d78;
-        }
+.cart {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
 
-        /* PANIER */
+.delivery {
+    margin: 20px 0;
+}
 
-        .cart {
-            background: white;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-        }
+.total {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
 
-        .cart h2 {
-            color: #0756a8;
-            text-align: center;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            gap: 10px;
-        }
-
-        .quantity {
-            display: flex;
-            align-items: center;
-        }
-
-        .quantity button {
-            background: #0756a8;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .quantity span {
-            margin: 0 10px;
-            font-weight: bold;
-        }
-
-        .total {
-            text-align: right;
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        /* LIVRAISON */
-
-        .delivery {
-            margin-top: 25px;
-        }
-
-        .delivery h3 {
-            color: #0756a8;
-        }
-
-        .delivery select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        /* INFORMATIONS CLIENT */
-
-        .customer-info {
-            margin-top: 25px;
-        }
-
-        .customer-info h3 {
-            color: #0756a8;
-        }
-
-        .customer-info input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 12px;
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        /* BOUTONS */
-
-        .delete-button {
-            margin-top: 20px;
-            background: #d62828;
-        }
-
-        .delete-button:hover {
-            background: #a51f1f;
-        }
-
-        .whatsapp {
-            background: #25D366;
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .whatsapp:hover {
-            background: #1ebe5d;
-        }
-
-        footer {
-            background: #0756a8;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
-
-    </style>
-
+footer {
+    background: #0756a8;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-
-        <h1>🛍️ Ndianor Shop</h1>
-
-        <p>Bienvenue dans ma boutique</p>
-
-    </header>
-
+<header>
+    <h1>🛍️ Ndianor Shop</h1>
+    <p>Bienvenue dans ma boutique</p>
 
     <nav>
-
-        <a href="#">Accueil</a>
-
+        <a href="#accueil">Accueil</a>
         <a href="#produits">Produits</a>
-
         <a href="#panier">🛒 Panier</a>
-
         <a href="#contact">Contact</a>
-
     </nav>
+</header>
 
+<section id="accueil">
+    <h2>🔥 Nos produits</h2>
+    <p>Découvrez nos produits disponibles.</p>
+</section>
 
-    <div class="container">
+<section id="produits">
+    <div class="products">
 
-        <h2 class="title" id="produits">
-            🔥 Nos produits
-        </h2>
-
-
-        <div class="products">
-
-
-            <!-- T-SHIRT -->
-
-            <div class="product">
-
-                <img
-                    src="images/tshirt.jpg"
-                    alt="T-Shirt"
-                >
-
-                <h2>T-Shirt</h2>
-
-                <p>
-                    T-Shirt moderne et confortable.
-                </p>
-
-                <p class="price">
-                    5 000 FCFA
-                </p>
-
-                <button
-                    class="button"
-                    onclick="ajouterAuPanier('T-Shirt', 5000)"
-                >
-                    🛒 Ajouter au panier
-                </button>
-
-            </div>
-
-
-            <!-- CHAUSSURES -->
-
-            <div class="product">
-
-                <img
-                    src="images/chaussures.jpg"
-                    alt="Chaussures"
-                >
-
-                <h2>Chaussures</h2>
-
-                <p>
-                    Chaussures de sport.
-                </p>
-
-                <p class="price">
-                    15 000 FCFA
-                </p>
-
-                <button
-                    class="button"
-                    onclick="ajouterAuPanier('Chaussures', 15000)"
-                >
-                    🛒 Ajouter au panier
-                </button>
-
-            </div>
-
-
-            <!-- ECOUTEURS -->
-
-            <div class="product">
-
-                <img
-                    src="images/ecouteurs.jpg"
-                    alt="Écouteurs"
-                >
-
-                <h2>Écouteurs</h2>
-
-                <p>
-                    Écouteurs pour écouter ta musique.
-                </p>
-
-                <p class="price">
-                    8 000 FCFA
-                </p>
-
-                <button
-                    class="button"
-                    onclick="ajouterAuPanier('Écouteurs', 8000)"
-                >
-                    🛒 Ajouter au panier
-                </button>
-
-            </div>
-
-
+        <div class="product">
+            <img src="tshirt.jpg" alt="T-Shirt">
+            <h3>T-Shirt</h3>
+            <p>T-Shirt moderne et confortable.</p>
+            <p class="price">5 000 FCFA</p>
+            <button class="add" onclick="ajouter('T-Shirt', 5000)">
+                🛒 Ajouter au panier
+            </button>
         </div>
 
-
-        <!-- PANIER -->
-
-        <div class="cart" id="panier">
-
-            <h2>
-                🛒 Mon panier
-            </h2>
-
-
-            <div id="cartItems">
-
-                <p>
-                    Votre panier est vide.
-                </p>
-
-            </div>
-
-
-            <!-- LIVRAISON -->
-
-            <div class="delivery">
-
-                <h3>
-                    🚚 Livraison
-                </h3>
-
-                <select
-                    id="livraison"
-                    onchange="afficherPanier()"
-                >
-
-                    <option value="0">
-                        Retrait sur place — 0 FCFA
-                    </option>
-
-                    <option value="1500">
-                        Dakar — 1 500 FCFA
-                    </option>
-
-                    <option value="2500">
-                        Banlieue — 2 500 FCFA
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- TOTAL -->
-
-            <div class="total">
-
-                Total :
-                <span id="total">
-                    0
-                </span>
-                FCFA
-
-            </div>
-
-
-            <!-- VIDER PANIER -->
-
-            <button
-                class="button delete-button"
-                onclick="viderPanier()"
-            >
-
-                🗑️ Vider le panier
-
+        <div class="product">
+            <img src="chaussures.jpg" alt="Chaussures">
+            <h3>Chaussures</h3>
+            <p>Chaussures de sport.</p>
+            <p class="price">15 000 FCFA</p>
+            <button class="add" onclick="ajouter('Chaussures', 15000)">
+                🛒 Ajouter au panier
             </button>
+        </div>
 
-
-            <!-- INFORMATIONS CLIENT -->
-
-            <div class="customer-info">
-
-                <h3>
-                    📋 Informations de livraison
-                </h3>
-
-
-                <input
-                    type="text"
-                    id="clientNom"
-                    placeholder="Votre nom"
-                >
-
-
-                <input
-                    type="tel"
-                    id="clientTelephone"
-                    placeholder="Votre numéro de téléphone"
-                >
-
-
-                <input
-                    type="text"
-                    id="clientAdresse"
-                    placeholder="Votre adresse ou quartier"
-                >
-
-            </div>
-
-
-            <!-- WHATSAPP -->
-
-            <button
-                class="whatsapp"
-                onclick="commanderWhatsApp()"
-            >
-
-                📱 Commander sur WhatsApp
-
+        <div class="product">
+            <img src="ecouteurs.jpg" alt="Écouteurs">
+            <h3>Écouteurs</h3>
+            <p>Écouteurs pour écouter ta musique.</p>
+            <p class="price">8 000 FCFA</p>
+            <button class="add" onclick="ajouter('Écouteurs', 8000)">
+                🛒 Ajouter au panier
             </button>
-
-
         </div>
 
     </div>
+</section>
 
+<section id="panier">
+    <h2>🛒 Mon panier</h2>
 
-    <footer id="contact">
+    <div class="cart">
+        <div id="listePanier">
+            Votre panier est vide.
+        </div>
 
-        <p>
-            © 2026 Ndianor Shop
-        </p>
+        <div class="delivery">
+            <h3>🚚 Livraison</h3>
 
-        <p>
-            Votre boutique en ligne
-        </p>
+            <label>
+                <input type="radio" name="livraison" value="0" checked onchange="calculerTotal()">
+                Retrait sur place — 0 FCFA
+            </label>
+            <br><br>
 
-    </footer>
+            <label>
+                <input type="radio" name="livraison" value="1500" onchange="calculerTotal()">
+                Dakar — 1 500 FCFA
+            </label>
+            <br><br>
 
+            <label>
+                <input type="radio" name="livraison" value="2500" onchange="calculerTotal()">
+                Banlieue — 2 500 FCFA
+            </label>
+        </div>
 
+        <div class="total">
+            Total : <span id="total">0</span> FCFA
+        </div>
+
+        <button class="delete" onclick="viderPanier()">
+            🗑️ Vider le panier
+        </button>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>📋 Informations de livraison</h2>
+
+    <p>Pour commander, ajoute tes produits au panier puis contacte-nous sur WhatsApp.</p>
+
+    <button class="whatsapp" onclick="commanderWhatsApp()">
+        📱 Commander sur WhatsApp
+    </button>
+</section>
+
+<footer>
+    © 2026 Ndianor Shop
+    <br>
+    Votre boutique en ligne
+</footer>
 
 <script>
 
-    // =========================
-    // PANIER
-    // =========================
+let panier = [];
 
-    let panier = [];
+function ajouter(nom, prix) {
+    panier.push({
+        nom: nom,
+        prix: prix
+    });
 
+    afficherPanier();
+}
 
-    // =========================
-    // AJOUTER AU PANIER
-    // =========================
+function afficherPanier() {
 
-    function ajouterAuPanier(nom, prix) {
-
-        let produit = panier.find(function(item) {
-
-            return item.nom === nom;
-
-        });
-
-
-        if (produit) {
-
-            produit.quantite++;
-
-        } else {
-
-            panier.push({
-
-                nom: nom,
-
-                prix: prix,
-
-                quantite: 1
-
-            });
-
-        }
-
-
-        afficherPanier();
-
-    }
-
-
-
-    // =========================
-    // AUGMENTER QUANTITE
-    // =========================
-
-    function augmenter(index) {
-
-        panier[index].quantite++;
-
-        afficherPanier();
-
-    }
-
-
-
-    // =========================
-    // DIMINUER QUANTITE
-    // =========================
-
-    function diminuer(index) {
-
-        panier[index].quantite--;
-
-
-        if (panier[index].quantite <= 0) {
-
-            panier.splice(index, 1);
-
-        }
-
-
-        afficherPanier();
-
-    }
-
-
-
-    // =========================
-    // AFFICHER PANIER
-    // =========================
-
-    function afficherPanier() {
-
-        let cartItems =
-            document.getElementById("cartItems");
-
-        let totalElement =
-            document.getElementById("total");
-
-
-        cartItems.innerHTML = "";
-
-
-        let totalProduits = 0;
-
-
-        // PANIER VIDE
-
-        if (panier.length === 0) {
-
-            cartItems.innerHTML =
-                "<p>Votre panier est vide.</p>";
-
-            totalElement.textContent = "0";
-
-            return;
-
-        }
-
-
-        // AFFICHER LES PRODUITS
-
-        panier.forEach(function(produit, index) {
-
-            let sousTotal =
-                produit.prix * produit.quantite;
-
-
-            totalProduits += sousTotal;
-
-
-            cartItems.innerHTML += `
-
-                <div class="cart-item">
-
-                    <div>
-
-                        <strong>
-                            ${produit.nom}
-                        </strong>
-
-                        <br>
-
-                        ${produit.prix.toLocaleString()}
-                        FCFA
-
-                    </div>
-
-
-                    <div class="quantity">
-
-                        <button
-                            onclick="diminuer(${index})"
-                        >
-                            −
-                        </button>
-
-
-                        <span>
-                            ${produit.quantite}
-                        </span>
-
-
-                        <button
-                            onclick="augmenter(${index})"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-
-                    <strong>
-
-                        ${sousTotal.toLocaleString()}
-                        FCFA
-
-                    </strong>
-
-                </div>
-
-            `;
-
-        });
-
-
-        // =========================
-        // FRAIS LIVRAISON
-        // =========================
-
-        let livraisonElement =
-            document.getElementById("livraison");
-
-
-        let fraisLivraison =
-            Number(livraisonElement.value);
-
-
-        // TOTAL FINAL
-
-        let totalFinal =
-            totalProduits + fraisLivraison;
-
-
-        totalElement.textContent =
-            totalFinal.toLocaleString();
-
-    }
-
-
-
-    // =========================
-    // VIDER LE PANIER
-    // =========================
-
-    function viderPanier() {
-
-        panier = [];
-
-        afficherPanier();
-
-    }
-
-
-
-    // =========================
-    // COMMANDER WHATSAPP
-    // =========================
-function commanderWhatsApp() {
+    let liste = document.getElementById("listePanier");
 
     if (panier.length === 0) {
-        alert("Votre panier est vide.");
+        liste.innerHTML = "Votre panier est vide.";
+        document.getElementById("total").textContent = "0";
         return;
     }
 
-    let nom = document.getElementById("clientNom").value;
-    let telephone = document.getElementById("clientTelephone").value;
-    let adresse = document.getElementById("clientAdresse").value;
+    let html = "";
 
-    if (nom === "" || telephone === "" || adresse === "") {
-        alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
-        return;
-    }
+    panier.forEach(function(produit, index) {
 
-    let livraisonElement = document.getElementById("livraison");
+        html += `
+            <div style="margin-bottom:15px;">
+                <strong>${produit.nom}</strong>
+                — ${produit.prix.toLocaleString("fr-FR")} FCFA
+                <button class="delete" onclick="supprimer(${index})">
+                    Supprimer
+                </button>
+            </div>
+        `;
 
-    let fraisLivraison = 0;
-    let nomLivraison = "Retrait sur place";
+    });
 
-    if (livraisonElement) {
-        fraisLivraison = Number(livraisonElement.value);
+    liste.innerHTML = html;
 
-        if (livraisonElement.value === "1500") {
-            nomLivraison = "Dakar";
-        }
+    calculerTotal();
+}
 
-        if (livraisonElement.value === "2500") {
-            nomLivraison = "Banlieue";
-        }
-    }
+function supprimer(index) {
 
-    let message = "Bonjour, je voudrais commander :\n\n";
+    panier.splice(index, 1);
+
+    afficherPanier();
+}
+
+function viderPanier() {
+
+    panier = [];
+
+    afficherPanier();
+}
+
+function calculerTotal() {
 
     let totalProduits = 0;
 
     panier.forEach(function(produit) {
-
-        let sousTotal = produit.prix * produit.quantite;
-
-        totalProduits += sousTotal;
-
-        message +=
-            "- " +
-            produit.nom +
-            " x" +
-            produit.quantite +
-            " = " +
-            sousTotal.toLocaleString() +
-            " FCFA\n";
+        totalProduits += produit.prix;
     });
 
-    let totalFinal = totalProduits + fraisLivraison;
+    let livraison = document.querySelector(
+        'input[name="livraison"]:checked'
+    ).value;
 
-    message +=
-        "\nLivraison : " +
-        nomLivraison +
-        " = " +
-        fraisLivraison.toLocaleString() +
+    let total = totalProduits + Number(livraison);
+
+    document.getElementById("total").textContent =
+        total.toLocaleString("fr-FR");
+}
+
+function commanderWhatsApp() {
+
+    if (panier.length === 0) {
+        alert("Ton panier est vide.");
+        return;
+    }
+
+    let message = "Bonjour Ndianor Shop,%0A%0A";
+    message += "Je souhaite commander :%0A";
+
+    panier.forEach(function(produit) {
+
+        message += "- " + produit.nom + " : " +
+        produit.prix.toLocaleString("fr-FR") +
+        " FCFA%0A";
+
+    });
+
+    let livraison = document.querySelector(
+        'input[name="livraison"]:checked'
+    ).value;
+
+    message += "%0ALivraison : " +
+        Number(livraison).toLocaleString("fr-FR") +
         " FCFA";
 
-    message +=
-        "\n\nTotal : " +
-        totalFinal.toLocaleString() +
-        " FCFA";
+    let totalProduits = panier.reduce(
+        (total, produit) => total + produit.prix,
+        0
+    );
 
-    message +=
-        "\n\nNom : " + nom +
-        "\nTéléphone : " + telephone +
-        "\nAdresse : " + adresse;
+    let total = totalProduits + Number(livraison);
+
+    message += "%0A%0ATotal : " +
+        total.toLocaleString("fr-FR") +
+        " FCFA";
 
     let numero = "221782220651";
 
-    let url =
-        "whatsapp://send?phone=" +
-        numero +
-        "&text=" +
-        encodeURIComponent(message);
-
-    if (confirm("Confirmer l'envoi de votre commande sur WhatsApp ?")) {
-        window.open(url, "_blank");
-    }
+    window.open(
+        "https://wa.me/" + numero + "?text=" + message,
+        "_blank"
+    );
 }
-    </script>
 
+</script>
 
 </body>
-
 </html>
-```
