@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Ndianor Shop</title>
 
 <style>
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -77,15 +74,11 @@ section {
 
 button {
     border: none;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     margin-top: 8px;
-}
-
-button:hover {
-    opacity: 0.9;
 }
 
 .add {
@@ -102,7 +95,6 @@ button:hover {
     background: #25D366;
     color: white;
     width: 100%;
-    font-size: 16px;
 }
 
 .cart {
@@ -112,91 +104,14 @@ button:hover {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.quantity {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.quantity button {
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    margin: 0;
-    background: #0756a8;
-    color: white;
-}
-
-.quantity span {
-    font-weight: bold;
-    min-width: 25px;
-    text-align: center;
-}
-
 .delivery {
-    margin: 25px 0;
+    margin: 20px 0;
 }
 
 .total {
     font-size: 22px;
     font-weight: bold;
     margin: 20px 0;
-    color: #0756a8;
-}
-
-.formulaire {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.formulaire label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.formulaire input,
-.formulaire textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    margin-top: 7px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-}
-
-.formulaire textarea {
-    min-height: 90px;
-    resize: vertical;
-}
-
-.message {
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 8px;
-    display: none;
-}
-
-.success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.error {
-    background: #f8d7da;
-    color: #721c24;
 }
 
 footer {
@@ -206,18 +121,13 @@ footer {
     padding: 20px;
     margin-top: 40px;
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <header>
-
     <h1>🛍️ Ndianor Shop</h1>
-
     <p>Bienvenue dans ma boutique</p>
 
     <nav>
@@ -226,95 +136,53 @@ footer {
         <a href="#panier">🛒 Panier</a>
         <a href="#contact">Contact</a>
     </nav>
-
 </header>
 
-
 <section id="accueil">
-
     <h2>🔥 Nos produits</h2>
-
     <p>Découvrez nos produits disponibles.</p>
-
 </section>
-
 
 <section id="produits">
-
     <div class="products">
 
-
-        <!-- T-SHIRT -->
-
         <div class="product">
-
-            <img src="tshirt.jpg" alt="T-Shirt">
-
+            <img src="t-shirt.jpg" alt="T-Shirt">
             <h3>T-Shirt</h3>
-
             <p>T-Shirt moderne et confortable.</p>
-
             <p class="price">5 000 FCFA</p>
 
-            <button
-                class="add"
-                onclick="ajouter('T-Shirt', 5000)">
+            <button class="add" onclick="ajouter('T-Shirt', 5000)">
                 🛒 Ajouter au panier
             </button>
-
         </div>
 
-
-        <!-- CHAUSSURES -->
-
         <div class="product">
-
             <img src="chaussures.jpg" alt="Chaussures">
-
             <h3>Chaussures</h3>
-
             <p>Chaussures de sport.</p>
-
             <p class="price">15 000 FCFA</p>
 
-            <button
-                class="add"
-                onclick="ajouter('Chaussures', 15000)">
+            <button class="add" onclick="ajouter('Chaussures', 15000)">
                 🛒 Ajouter au panier
             </button>
-
         </div>
-
-
-        <!-- ECOUTEURS -->
 
         <div class="product">
-
-            <img src="ecouteurs.jpg" alt="Écouteurs">
-
+            <img src="écouteurs.jpg" alt="Écouteurs">
             <h3>Écouteurs</h3>
-
             <p>Écouteurs pour écouter ta musique.</p>
-
             <p class="price">8 000 FCFA</p>
 
-            <button
-                class="add"
-                onclick="ajouter('Écouteurs', 8000)">
+            <button class="add" onclick="ajouter('Écouteurs', 8000)">
                 🛒 Ajouter au panier
             </button>
-
         </div>
 
-
     </div>
-
 </section>
 
-
-
 <section id="panier">
-
     <h2>🛒 Mon panier</h2>
 
     <div class="cart">
@@ -323,741 +191,241 @@ footer {
             Votre panier est vide.
         </div>
 
-
         <div class="delivery">
 
             <h3>🚚 Livraison</h3>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="livraison"
                     value="0"
-                    data-nom="Retrait sur place"
                     checked
-                    onchange="calculerTotal()">
-
+                    onchange="calculerTotal()"
+                >
                 Retrait sur place — 0 FCFA
-
             </label>
-
 
             <br><br>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="livraison"
                     value="1500"
-                    data-nom="Dakar"
-                    onchange="calculerTotal()">
-
+                    onchange="calculerTotal()"
+                >
                 Dakar — 1 500 FCFA
-
             </label>
-
 
             <br><br>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="livraison"
                     value="2500"
-                    data-nom="Banlieue"
-                    onchange="calculerTotal()">
-
+                    onchange="calculerTotal()"
+                >
                 Banlieue — 2 500 FCFA
-
             </label>
 
         </div>
 
-
         <div class="total">
-
-            Total :
-            <span id="total">0</span>
-            FCFA
-
+            Total : <span id="total">0</span> FCFA
         </div>
 
-
-        <button
-            class="delete"
-            onclick="viderPanier()">
-
+        <button class="delete" onclick="viderPanier()">
             🗑️ Vider le panier
-
         </button>
 
     </div>
-
 </section>
-
-
 
 <section id="contact">
 
     <h2>📋 Informations de livraison</h2>
 
+    <p>
+        Pour commander, ajoute tes produits au panier
+        puis contacte-nous sur WhatsApp.
+    </p>
 
-    <div class="formulaire">
-
-
-        <label for="nom">
-            Nom complet
-        </label>
-
-        <input
-            type="text"
-            id="nom"
-            placeholder="Exemple : Cheikhou Ndianor">
-
-
-        <label for="telephone">
-            📱 Téléphone
-        </label>
-
-        <input
-            type="tel"
-            id="telephone"
-            placeholder="Exemple : 78 222 06 51">
-
-
-        <label for="adresse">
-            📍 Adresse
-        </label>
-
-        <textarea
-            id="adresse"
-            placeholder="Exemple : Dakar, Guédiawaye..."></textarea>
-
-
-        <div
-            id="message"
-            class="message">
-        </div>
-
-
-        <button
-            class="whatsapp"
-            onclick="commander()">
-
-            📱 Commander sur WhatsApp
-
-        </button>
-
-    </div>
+    <button class="whatsapp" onclick="commanderWhatsApp()">
+        📱 Commander sur WhatsApp
+    </button>
 
 </section>
 
-
-
 <footer>
-
     © 2026 Ndianor Shop
-
     <br>
-
     Votre boutique en ligne
-
 </footer>
-
-
 
 <script>
 
-/* =====================================================
-   CONFIGURATION SUPABASE
-   ===================================================== */
-
-const SUPABASE_URL =
-"https://nrmqsndynrfosecegzip.supabase.co";
-
-
-const SUPABASE_KEY =
-"COLLE_ICI_TA_CLE_PUBLIABLE";
-
-
-/* =====================================================
-   PANIER
-   ===================================================== */
-
 let panier = [];
-
-
-/* =====================================================
-   AJOUTER AU PANIER
-   ===================================================== */
 
 function ajouter(nom, prix) {
 
-    const produitExistant =
-        panier.find(produit => produit.nom === nom);
-
-
-    if (produitExistant) {
-
-        produitExistant.quantite++;
-
-    } else {
-
-        panier.push({
-
-            nom: nom,
-            prix: prix,
-            quantite: 1
-
-        });
-
-    }
-
+    panier.push({
+        nom: nom,
+        prix: prix
+    });
 
     afficherPanier();
-
 }
-
-
-/* =====================================================
-   AFFICHER LE PANIER
-   ===================================================== */
 
 function afficherPanier() {
 
-    const liste =
-        document.getElementById("listePanier");
-
+    let liste = document.getElementById("listePanier");
 
     if (panier.length === 0) {
 
-        liste.innerHTML =
-            "Votre panier est vide.";
+        liste.innerHTML = "Votre panier est vide.";
 
-        document.getElementById("total").textContent =
-            "0";
+        document.getElementById("total").textContent = "0";
 
         return;
-
     }
 
-
     let html = "";
-
 
     panier.forEach(function(produit, index) {
 
         html += `
-
-        <div class="cart-item">
-
-            <div>
-
+            <div style="margin-bottom:15px;">
                 <strong>${produit.nom}</strong>
-
-                <br>
-
-                ${(produit.prix * produit.quantite)
-                    .toLocaleString("fr-FR")} FCFA
-
-            </div>
-
-
-            <div class="quantity">
+                — ${produit.prix.toLocaleString("fr-FR")} FCFA
 
                 <button
-                    onclick="diminuer(${index})">
-                    −
+                    class="delete"
+                    onclick="supprimer(${index})"
+                >
+                    Supprimer
                 </button>
-
-
-                <span>
-                    ${produit.quantite}
-                </span>
-
-
-                <button
-                    onclick="augmenter(${index})">
-                    +
-                </button>
-
             </div>
-
-
-            <button
-                class="delete"
-                onclick="supprimer(${index})">
-
-                Supprimer
-
-            </button>
-
-        </div>
-
         `;
 
     });
 
-
     liste.innerHTML = html;
 
-
     calculerTotal();
-
 }
-
-
-/* =====================================================
-   AUGMENTER QUANTITE
-   ===================================================== */
-
-function augmenter(index) {
-
-    panier[index].quantite++;
-
-    afficherPanier();
-
-}
-
-
-/* =====================================================
-   DIMINUER QUANTITE
-   ===================================================== */
-
-function diminuer(index) {
-
-    if (panier[index].quantite > 1) {
-
-        panier[index].quantite--;
-
-    } else {
-
-        panier.splice(index, 1);
-
-    }
-
-
-    afficherPanier();
-
-}
-
-
-/* =====================================================
-   SUPPRIMER
-   ===================================================== */
 
 function supprimer(index) {
 
     panier.splice(index, 1);
 
     afficherPanier();
-
 }
-
-
-/* =====================================================
-   VIDER LE PANIER
-   ===================================================== */
 
 function viderPanier() {
 
     panier = [];
 
     afficherPanier();
-
 }
-
-
-/* =====================================================
-   CALCULER TOTAL
-   ===================================================== */
 
 function calculerTotal() {
 
     let totalProduits = 0;
 
-
     panier.forEach(function(produit) {
 
-        totalProduits +=
-            produit.prix * produit.quantite;
+        totalProduits += produit.prix;
 
     });
 
+    let livraison = document.querySelector(
+        'input[name="livraison"]:checked'
+    ).value;
 
-    const livraison =
-        document.querySelector(
-            'input[name="livraison"]:checked'
-        );
-
-
-    const fraisLivraison =
-        Number(livraison.value);
-
-
-    const total =
-        totalProduits + fraisLivraison;
-
+    let total = totalProduits + Number(livraison);
 
     document.getElementById("total").textContent =
         total.toLocaleString("fr-FR");
-
 }
 
-
-/* =====================================================
-   MESSAGE
-   ===================================================== */
-
-function afficherMessage(texte, type) {
-
-    const message =
-        document.getElementById("message");
-
-
-    message.textContent = texte;
-
-    message.className =
-        "message " + type;
-
-    message.style.display = "block";
-
-}
-
-
-/* =====================================================
-   COMMANDER
-   ===================================================== */
-
-async function commander() {
-
-
-    /* Vérifier panier */
+function commanderWhatsApp() {
 
     if (panier.length === 0) {
 
-        afficherMessage(
-            "Ton panier est vide.",
-            "error"
-        );
+        alert("Ton panier est vide.");
 
         return;
-
     }
 
+    let message =
+        "Bonjour Ndianor Shop,\n\n" +
+        "Je souhaite commander :\n";
 
-    /* Informations client */
+    panier.forEach(function(produit) {
 
-    const nom =
-        document.getElementById("nom").value.trim();
+        message +=
+            "- " +
+            produit.nom +
+            " : " +
+            produit.prix.toLocaleString("fr-FR") +
+            " FCFA\n";
 
+    });
 
-    const telephone =
-        document.getElementById("telephone").value.trim();
+    let livraison = document.querySelector(
+        'input[name="livraison"]:checked'
+    ).value;
 
+    let nomLivraison = "";
 
-    const adresse =
-        document.getElementById("adresse").value.trim();
-
-
-    if (!nom) {
-
-        afficherMessage(
-            "Veuillez entrer votre nom.",
-            "error"
-        );
-
-        return;
-
+    if (livraison === "0") {
+        nomLivraison = "Retrait sur place";
     }
 
-
-    if (!telephone) {
-
-        afficherMessage(
-            "Veuillez entrer votre numéro de téléphone.",
-            "error"
-        );
-
-        return;
-
+    if (livraison === "1500") {
+        nomLivraison = "Dakar";
     }
 
-
-    if (!adresse) {
-
-        afficherMessage(
-            "Veuillez entrer votre adresse.",
-            "error"
-        );
-
-        return;
-
+    if (livraison === "2500") {
+        nomLivraison = "Banlieue";
     }
 
-
-    /* Livraison */
-
-    const livraisonElement =
-        document.querySelector(
-            'input[name="livraison"]:checked'
-        );
-
-
-    const fraisLivraison =
-        Number(livraisonElement.value);
-
-
-    const nomLivraison =
-        livraisonElement.dataset.nom;
-
-
-    /* Produits */
-
-    const produitsCommande =
-        panier.map(function(produit) {
-
-            return {
-
-                nom: produit.nom,
-
-                prix: produit.prix,
-
-                quantite: produit.quantite,
-
-                sous_total:
-                    produit.prix * produit.quantite
-
-            };
-
-        });
-
-
-    /* Total produits */
-
-    const totalProduits =
-        panier.reduce(
-            function(total, produit) {
-
-                return total +
-                    produit.prix *
-                    produit.quantite;
-
-            },
-            0
-        );
-
-
-    /* Total général */
-
-    const total =
-        totalProduits +
-        fraisLivraison;
-
-
-    /* =================================================
-       ENREGISTREMENT SUPABASE
-       ================================================= */
-
-
-    if (
-        SUPABASE_KEY ===
-        "COLLE_ICI_TA_CLE_PUBLIABLE"
-    ) {
-
-        afficherMessage(
-            "⚠️ La clé Supabase n'est pas encore configurée.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    try {
-
-
-        const reponse =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/commandes",
-                {
-
-                    method: "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/json",
-
-                        "apikey":
-                            SUPABASE_KEY,
-
-                        "Authorization":
-                            "Bearer " +
-                            SUPABASE_KEY,
-
-                        "Prefer":
-                            "return=minimal"
-
-                    },
-
-                    body: JSON.stringify({
-
-                        nom_client: nom,
-
-                        telephone: telephone,
-
-                        adresse: adresse,
-
-                        produits:
-                            produitsCommande,
-
-                        livraison:
-                            nomLivraison,
-
-                        frais_livraison:
-                            fraisLivraison,
-
-                        total:
-                            total,
-
-                        statut:
-                            "En attente",
-
-                        paiement:
-                            "Non payé"
-
-                    })
-
-                }
-            );
-
-
-        if (!reponse.ok) {
-
-            const erreur =
-                await reponse.text();
-
-            console.error(erreur);
-
-            afficherMessage(
-                "❌ Impossible d'enregistrer la commande. Vérifie Supabase et les politiques RLS.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        /* =================================================
-           WHATSAPP
-           ================================================= */
-
-
-        let message =
-            "Bonjour Ndianor Shop,\n\n";
-
-
-        message +=
-            "Je souhaite commander :\n";
-
-
-        produitsCommande.forEach(function(produit) {
-
-            message +=
-                "- " +
-                produit.nom +
-                " x" +
-                produit.quantite +
-                " : " +
-                produit.sous_total
-                    .toLocaleString("fr-FR") +
-                " FCFA\n";
-
-        });
-
-
-        message +=
-            "\nLivraison : " +
-            nomLivraison;
-
-
-        message +=
-            " — " +
-            fraisLivraison
-                .toLocaleString("fr-FR") +
-            " FCFA";
-
-
-        message +=
-            "\n\nTotal : " +
-            total
-                .toLocaleString("fr-FR") +
-            " FCFA";
-
-
-        message +=
-            "\n\nNom : " +
-            nom;
-
-
-        message +=
-            "\nTéléphone : " +
-            telephone;
-
-
-        message +=
-            "\nAdresse : " +
-            adresse;
-
-
-        const numero =
-            "221782220651";
-
-
-        const urlWhatsApp =
-            "https://wa.me/" +
-            numero +
-            "?text=" +
-            encodeURIComponent(message);
-
-
-        afficherMessage(
-            "✅ Commande enregistrée ! Ouverture de WhatsApp...",
-            "success"
-        );
-
-
-        window.open(
-            urlWhatsApp,
-            "_blank"
-        );
-
-
-    } catch (erreur) {
-
-        console.error(erreur);
-
-        afficherMessage(
-            "❌ Erreur de connexion à Supabase.",
-            "error"
-        );
-
-    }
-
+    message +=
+        "\nLivraison : " +
+        nomLivraison +
+        " — " +
+        Number(livraison).toLocaleString("fr-FR") +
+        " FCFA";
+
+    let totalProduits = panier.reduce(
+        function(total, produit) {
+            return total + produit.prix;
+        },
+        0
+    );
+
+    let total =
+        totalProduits + Number(livraison);
+
+    message +=
+        "\n\nTotal : " +
+        total.toLocaleString("fr-FR") +
+        " FCFA";
+
+    let numero = "221782220651";
+
+    let url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url, "_blank");
 }
 
 </script>
-
 
 </body>
 </html>
