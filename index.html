@@ -1,133 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ndianor Shop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #222;
-}
+    <title>Ndianor Shop</title>
 
-header {
-    background: #0756a8;
-    color: white;
-    padding: 25px 15px;
-    text-align: center;
-}
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-header h1 {
-    margin: 0;
-}
+    <style>
 
-nav {
-    margin-top: 15px;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 8px;
-    font-weight: bold;
-}
+        header {
+            background: #0756a8;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
 
-section {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
-}
+        header h1 {
+            margin: 0;
+        }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
+        nav {
+            margin-top: 15px;
+        }
 
-.product {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    text-align: center;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: bold;
+        }
 
-.product img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    border-radius: 8px;
-}
+        section {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
 
-.product h3 {
-    margin-bottom: 5px;
-}
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-.price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0756a8;
-}
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-button {
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 8px;
-}
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
 
-.add {
-    background: #0756a8;
-    color: white;
-}
+        .product h3 {
+            margin-bottom: 5px;
+        }
 
-.delete {
-    background: #d9534f;
-    color: white;
-}
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0756a8;
+        }
 
-.whatsapp {
-    background: #25D366;
-    color: white;
-    width: 100%;
-}
+        button {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
-.cart {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
+        button:hover {
+            opacity: 0.9;
+        }
 
-.delivery {
-    margin: 20px 0;
-}
+        .add {
+            background: #0756a8;
+            color: white;
+        }
 
-.total {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 20px 0;
-}
+        .delete {
+            background: #d9534f;
+            color: white;
+        }
 
-footer {
-    background: #0756a8;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}
-</style>
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .cart {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .delivery {
+            margin: 20px 0;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .client-form {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .client-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .client-form input,
+        .client-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .client-form textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+        }
+
+        .quantity-buttons {
+            margin-top: 8px;
+        }
+
+        .quantity-buttons button {
+            padding: 6px 12px;
+            margin-right: 5px;
+        }
+
+        .quantity {
+            font-weight: bold;
+            margin: 0 8px;
+        }
+
+        footer {
+            background: #0756a8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+    </style>
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>🛍️ Ndianor Shop</h1>
+
     <p>Bienvenue dans ma boutique</p>
 
     <nav>
@@ -136,66 +217,131 @@ footer {
         <a href="#panier">🛒 Panier</a>
         <a href="#contact">Contact</a>
     </nav>
+
 </header>
 
+
 <section id="accueil">
+
     <h2>🔥 Nos produits</h2>
-    <p>Découvrez nos produits disponibles.</p>
+
+    <p>
+        Découvrez nos produits disponibles chez Ndianor Shop.
+    </p>
+
 </section>
+
 
 <section id="produits">
+
     <div class="products">
 
+
+        <!-- T-SHIRT -->
+
         <div class="product">
+
             <img src="t-shirt.jpg" alt="T-Shirt">
+
             <h3>T-Shirt</h3>
-            <p>T-Shirt moderne et confortable.</p>
-            <p class="price">5 000 FCFA</p>
 
-            <button class="add" onclick="ajouter('T-Shirt', 5000)">
+            <p>
+                T-Shirt moderne et confortable.
+            </p>
+
+            <p class="price">
+                5 000 FCFA
+            </p>
+
+            <button
+                class="add"
+                onclick="ajouter('T-Shirt', 5000)"
+            >
                 🛒 Ajouter au panier
             </button>
+
         </div>
 
+
+        <!-- CHAUSSURES -->
+
         <div class="product">
+
             <img src="chaussures.jpg" alt="Chaussures">
-            <h3>Chaussures</h3>
-            <p>Chaussures de sport.</p>
-            <p class="price">15 000 FCFA</p>
 
-            <button class="add" onclick="ajouter('Chaussures', 15000)">
+            <h3>Chaussures</h3>
+
+            <p>
+                Chaussures de sport.
+            </p>
+
+            <p class="price">
+                15 000 FCFA
+            </p>
+
+            <button
+                class="add"
+                onclick="ajouter('Chaussures', 15000)"
+            >
                 🛒 Ajouter au panier
             </button>
+
         </div>
+
+
+        <!-- ECOUTEURS -->
 
         <div class="product">
-            <img src="écouteurs.jpg" alt="Écouteurs">
-            <h3>Écouteurs</h3>
-            <p>Écouteurs pour écouter ta musique.</p>
-            <p class="price">8 000 FCFA</p>
 
-            <button class="add" onclick="ajouter('Écouteurs', 8000)">
+            <img src="écouteurs.jpg" alt="Écouteurs">
+
+            <h3>Écouteurs</h3>
+
+            <p>
+                Écouteurs pour écouter ta musique.
+            </p>
+
+            <p class="price">
+                8 000 FCFA
+            </p>
+
+            <button
+                class="add"
+                onclick="ajouter('Écouteurs', 8000)"
+            >
                 🛒 Ajouter au panier
             </button>
+
         </div>
+
 
     </div>
+
 </section>
 
+
 <section id="panier">
+
     <h2>🛒 Mon panier</h2>
+
 
     <div class="cart">
 
+
         <div id="listePanier">
+
             Votre panier est vide.
+
         </div>
+
 
         <div class="delivery">
 
             <h3>🚚 Livraison</h3>
 
+
             <label>
+
                 <input
                     type="radio"
                     name="livraison"
@@ -203,218 +349,857 @@ footer {
                     checked
                     onchange="calculerTotal()"
                 >
+
                 Retrait sur place — 0 FCFA
+
             </label>
+
 
             <br><br>
 
+
             <label>
+
                 <input
                     type="radio"
                     name="livraison"
                     value="1500"
                     onchange="calculerTotal()"
                 >
+
                 Dakar — 1 500 FCFA
+
             </label>
+
 
             <br><br>
 
+
             <label>
+
                 <input
                     type="radio"
                     name="livraison"
                     value="2500"
                     onchange="calculerTotal()"
                 >
+
                 Banlieue — 2 500 FCFA
+
             </label>
 
+
         </div>
+
 
         <div class="total">
-            Total : <span id="total">0</span> FCFA
+
+            Total :
+
+            <span id="total">
+                0
+            </span>
+
+            FCFA
+
         </div>
 
-        <button class="delete" onclick="viderPanier()">
+
+        <button
+            class="delete"
+            onclick="viderPanier()"
+        >
             🗑️ Vider le panier
         </button>
 
+
     </div>
+
 </section>
+
 
 <section id="contact">
 
     <h2>📋 Informations de livraison</h2>
 
-    <p>
-        Pour commander, ajoute tes produits au panier
-        puis contacte-nous sur WhatsApp.
-    </p>
 
-    <button class="whatsapp" onclick="commanderWhatsApp()">
-        📱 Commander sur WhatsApp
-    </button>
+    <div class="client-form">
+
+
+        <label for="nomClient">
+            👤 Nom complet
+        </label>
+
+        <input
+            type="text"
+            id="nomClient"
+            placeholder="Exemple : Cheikhou Ndianor"
+        >
+
+
+        <label for="telephoneClient">
+            📱 Téléphone
+        </label>
+
+        <input
+            type="tel"
+            id="telephoneClient"
+            placeholder="Exemple : 77 123 45 67"
+        >
+
+
+        <label for="adresseClient">
+            📍 Adresse
+        </label>
+
+        <textarea
+            id="adresseClient"
+            placeholder="Exemple : Guédiawaye, Dakar"
+        ></textarea>
+
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <button
+            class="whatsapp"
+            onclick="commanderWhatsApp()"
+        >
+            📱 Commander sur WhatsApp
+        </button>
+
+
+    </div>
 
 </section>
 
+
 <footer>
+
     © 2026 Ndianor Shop
+
     <br>
+
     Votre boutique en ligne
+
 </footer>
+
+
 
 <script>
 
+
+/* =====================================================
+   CONFIGURATION SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+    "https://nrmqsndynrfosecegzip.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_bmhFT6jtO0TOmMLWYynHYA_d0640BZZ";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+
+/* =====================================================
+   PANIER
+   ===================================================== */
+
 let panier = [];
+
+
+
+/* =====================================================
+   AJOUTER UN PRODUIT
+   ===================================================== */
 
 function ajouter(nom, prix) {
 
-    panier.push({
-        nom: nom,
-        prix: prix
-    });
+
+    let produitExistant =
+        panier.find(
+            function(produit) {
+                return produit.nom === nom;
+            }
+        );
+
+
+    if (produitExistant) {
+
+        produitExistant.quantite++;
+
+    } else {
+
+        panier.push({
+
+            nom: nom,
+
+            prix: prix,
+
+            quantite: 1
+
+        });
+
+    }
+
 
     afficherPanier();
+
 }
+
+
+
+/* =====================================================
+   AFFICHER LE PANIER
+   ===================================================== */
 
 function afficherPanier() {
 
-    let liste = document.getElementById("listePanier");
+
+    let liste =
+        document.getElementById("listePanier");
+
 
     if (panier.length === 0) {
 
-        liste.innerHTML = "Votre panier est vide.";
+        liste.innerHTML =
+            "Votre panier est vide.";
 
-        document.getElementById("total").textContent = "0";
+        document.getElementById("total").textContent =
+            "0";
 
         return;
+
     }
+
 
     let html = "";
 
-    panier.forEach(function(produit, index) {
 
-        html += `
-            <div style="margin-bottom:15px;">
-                <strong>${produit.nom}</strong>
-                — ${produit.prix.toLocaleString("fr-FR")} FCFA
+    panier.forEach(
+        function(produit, index) {
 
-                <button
-                    class="delete"
-                    onclick="supprimer(${index})"
-                >
-                    Supprimer
-                </button>
-            </div>
-        `;
 
-    });
+            let sousTotal =
+                produit.prix * produit.quantite;
+
+
+            html += `
+
+                <div class="cart-item">
+
+                    <strong>
+                        ${produit.nom}
+                    </strong>
+
+                    <br>
+
+                    Prix unitaire :
+                    ${produit.prix.toLocaleString("fr-FR")}
+                    FCFA
+
+                    <br>
+
+                    Sous-total :
+                    ${sousTotal.toLocaleString("fr-FR")}
+                    FCFA
+
+
+                    <div class="quantity-buttons">
+
+                        <button
+                            class="add"
+                            onclick="diminuer(${index})"
+                        >
+                            −
+                        </button>
+
+
+                        <span class="quantity">
+                            ${produit.quantite}
+                        </span>
+
+
+                        <button
+                            class="add"
+                            onclick="augmenter(${index})"
+                        >
+                            +
+                        </button>
+
+
+                        <button
+                            class="delete"
+                            onclick="supprimer(${index})"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
 
     liste.innerHTML = html;
 
+
     calculerTotal();
+
 }
+
+
+
+/* =====================================================
+   AUGMENTER QUANTITE
+   ===================================================== */
+
+function augmenter(index) {
+
+    panier[index].quantite++;
+
+    afficherPanier();
+
+}
+
+
+
+/* =====================================================
+   DIMINUER QUANTITE
+   ===================================================== */
+
+function diminuer(index) {
+
+
+    if (panier[index].quantite > 1) {
+
+        panier[index].quantite--;
+
+    } else {
+
+        panier.splice(index, 1);
+
+    }
+
+
+    afficherPanier();
+
+}
+
+
+
+/* =====================================================
+   SUPPRIMER
+   ===================================================== */
 
 function supprimer(index) {
 
     panier.splice(index, 1);
 
     afficherPanier();
+
 }
+
+
+
+/* =====================================================
+   VIDER PANIER
+   ===================================================== */
 
 function viderPanier() {
 
     panier = [];
 
     afficherPanier();
+
 }
+
+
+
+/* =====================================================
+   CALCUL TOTAL
+   ===================================================== */
 
 function calculerTotal() {
 
+
     let totalProduits = 0;
 
-    panier.forEach(function(produit) {
 
-        totalProduits += produit.prix;
+    panier.forEach(
+        function(produit) {
 
-    });
+            totalProduits +=
+                produit.prix *
+                produit.quantite;
 
-    let livraison = document.querySelector(
-        'input[name="livraison"]:checked'
-    ).value;
+        }
+    );
 
-    let total = totalProduits + Number(livraison);
+
+    let livraison =
+        document.querySelector(
+            'input[name="livraison"]:checked'
+        ).value;
+
+
+    let total =
+        totalProduits +
+        Number(livraison);
+
 
     document.getElementById("total").textContent =
         total.toLocaleString("fr-FR");
+
 }
 
-function commanderWhatsApp() {
+
+
+/* =====================================================
+   NOM DE LA LIVRAISON
+   ===================================================== */
+
+function obtenirNomLivraison(livraison) {
+
+
+    if (livraison === "0") {
+
+        return "Retrait sur place";
+
+    }
+
+
+    if (livraison === "1500") {
+
+        return "Dakar";
+
+    }
+
+
+    if (livraison === "2500") {
+
+        return "Banlieue";
+
+    }
+
+
+    return "Non précisé";
+
+}
+
+
+
+/* =====================================================
+   AFFICHER MESSAGE
+   ===================================================== */
+
+function afficherMessage(texte, type) {
+
+
+    let message =
+        document.getElementById("message");
+
+
+    message.textContent = texte;
+
+
+    message.className =
+        "message " + type;
+
+
+    message.style.display =
+        "block";
+
+}
+
+
+
+/* =====================================================
+   ENREGISTRER LA COMMANDE DANS SUPABASE
+   ===================================================== */
+
+async function enregistrerCommande() {
+
+
+    let nom =
+        document.getElementById(
+            "nomClient"
+        ).value.trim();
+
+
+    let telephone =
+        document.getElementById(
+            "telephoneClient"
+        ).value.trim();
+
+
+    let adresse =
+        document.getElementById(
+            "adresseClient"
+        ).value.trim();
+
+
+    if (nom === "") {
+
+        afficherMessage(
+            "❌ Entre ton nom.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if (telephone === "") {
+
+        afficherMessage(
+            "❌ Entre ton numéro de téléphone.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if (adresse === "") {
+
+        afficherMessage(
+            "❌ Entre ton adresse.",
+            "error"
+        );
+
+        return false;
+
+    }
+
 
     if (panier.length === 0) {
 
-        alert("Ton panier est vide.");
+        afficherMessage(
+            "❌ Ton panier est vide.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    let livraison =
+        document.querySelector(
+            'input[name="livraison"]:checked'
+        ).value;
+
+
+    let nomLivraison =
+        obtenirNomLivraison(livraison);
+
+
+    let fraisLivraison =
+        Number(livraison);
+
+
+    let totalProduits =
+        panier.reduce(
+            function(total, produit) {
+
+                return total +
+                    (
+                        produit.prix *
+                        produit.quantite
+                    );
+
+            },
+            0
+        );
+
+
+    let total =
+        totalProduits +
+        fraisLivraison;
+
+
+
+    /*
+       Préparation des produits
+       pour la colonne JSONB
+    */
+
+    let produitsPourSupabase =
+        panier.map(
+            function(produit) {
+
+                return {
+
+                    nom: produit.nom,
+
+                    prix: produit.prix,
+
+                    quantite: produit.quantite,
+
+                    sous_total:
+                        produit.prix *
+                        produit.quantite
+
+                };
+
+            }
+        );
+
+
+
+    /*
+       Insertion dans la table commandes
+    */
+
+    const { data, error } =
+        await supabaseClient
+            .from("commandes")
+            .insert([
+
+                {
+
+                    nom_client: nom,
+
+                    telephone: telephone,
+
+                    adresse: adresse,
+
+                    produits:
+                        produitsPourSupabase,
+
+                    livraison:
+                        nomLivraison,
+
+                    frais_livraison:
+                        fraisLivraison,
+
+                    total:
+                        total,
+
+                    statut:
+                        "Nouvelle",
+
+                    paiement:
+                        "À confirmer"
+
+                }
+
+            ])
+            .select();
+
+
+
+    if (error) {
+
+        console.error(
+            "Erreur Supabase :",
+            error
+        );
+
+
+        afficherMessage(
+            "❌ La commande n'a pas été enregistrée. Vérifie la connexion Supabase.",
+            "error"
+        );
+
+
+        return false;
+
+    }
+
+
+
+    console.log(
+        "Commande enregistrée :",
+        data
+    );
+
+
+    return true;
+
+}
+
+
+
+/* =====================================================
+   WHATSAPP
+   ===================================================== */
+
+async function commanderWhatsApp() {
+
+
+    /*
+       Affichage pendant l'enregistrement
+    */
+
+    afficherMessage(
+        "⏳ Enregistrement de la commande...",
+        "success"
+    );
+
+
+    /*
+       Enregistrer dans Supabase
+    */
+
+    let commandeEnregistree =
+        await enregistrerCommande();
+
+
+    /*
+       Si Supabase refuse,
+       on n'ouvre pas WhatsApp.
+    */
+
+    if (!commandeEnregistree) {
 
         return;
+
     }
+
+
+
+    let nom =
+        document.getElementById(
+            "nomClient"
+        ).value.trim();
+
+
+    let telephone =
+        document.getElementById(
+            "telephoneClient"
+        ).value.trim();
+
+
+    let adresse =
+        document.getElementById(
+            "adresseClient"
+        ).value.trim();
+
+
+    let livraison =
+        document.querySelector(
+            'input[name="livraison"]:checked'
+        ).value;
+
+
+    let nomLivraison =
+        obtenirNomLivraison(livraison);
+
+
 
     let message =
-        "Bonjour Ndianor Shop,\n\n" +
-        "Je souhaite commander :\n";
+        "Bonjour Ndianor Shop,\n\n";
 
-    panier.forEach(function(produit) {
 
-        message +=
-            "- " +
-            produit.nom +
-            " : " +
-            produit.prix.toLocaleString("fr-FR") +
-            " FCFA\n";
+    message +=
+        "Je souhaite commander :\n\n";
 
-    });
 
-    let livraison = document.querySelector(
-        'input[name="livraison"]:checked'
-    ).value;
 
-    let nomLivraison = "";
+    panier.forEach(
+        function(produit) {
 
-    if (livraison === "0") {
-        nomLivraison = "Retrait sur place";
-    }
 
-    if (livraison === "1500") {
-        nomLivraison = "Dakar";
-    }
+            let sousTotal =
+                produit.prix *
+                produit.quantite;
 
-    if (livraison === "2500") {
-        nomLivraison = "Banlieue";
-    }
+
+            message +=
+                "- " +
+                produit.nom +
+                " x" +
+                produit.quantite +
+                " : " +
+                sousTotal.toLocaleString("fr-FR") +
+                " FCFA\n";
+
+        }
+    );
+
+
+
+    let totalProduits =
+        panier.reduce(
+            function(total, produit) {
+
+                return total +
+                    (
+                        produit.prix *
+                        produit.quantite
+                    );
+
+            },
+            0
+        );
+
+
+    let fraisLivraison =
+        Number(livraison);
+
+
+    let total =
+        totalProduits +
+        fraisLivraison;
+
+
 
     message +=
         "\nLivraison : " +
         nomLivraison +
         " — " +
-        Number(livraison).toLocaleString("fr-FR") +
+        fraisLivraison.toLocaleString("fr-FR") +
         " FCFA";
 
-    let totalProduits = panier.reduce(
-        function(total, produit) {
-            return total + produit.prix;
-        },
-        0
-    );
-
-    let total =
-        totalProduits + Number(livraison);
 
     message +=
         "\n\nTotal : " +
         total.toLocaleString("fr-FR") +
         " FCFA";
 
-    let numero = "221782220651";
+
+    message +=
+        "\n\n👤 Nom : " +
+        nom;
+
+
+    message +=
+        "\n📱 Téléphone : " +
+        telephone;
+
+
+    message +=
+        "\n📍 Adresse : " +
+        adresse;
+
+
+
+    /*
+       Numéro WhatsApp de Ndianor Shop
+    */
+
+    let numero =
+        "221782220651";
+
 
     let url =
         "https://wa.me/" +
@@ -422,10 +1207,31 @@ function commanderWhatsApp() {
         "?text=" +
         encodeURIComponent(message);
 
-    window.open(url, "_blank");
+
+    afficherMessage(
+        "✅ Commande enregistrée ! Ouverture de WhatsApp...",
+        "success"
+    );
+
+
+    setTimeout(
+        function() {
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        },
+        500
+    );
+
 }
+
+
 
 </script>
 
 </body>
+
 </html>
